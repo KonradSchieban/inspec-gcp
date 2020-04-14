@@ -1,14 +1,35 @@
 # frozen_string_literal: false
+require 'google_compute_zones'
+# module Kstest for testing
+module ::Kstest
+  @some_var = "asdf"
+
+  def self.sample_string(str)
+    return str
+  end
+
+  def self.append_string(str1, str2)
+    return str1 + str2
+  end
+
+  def self.play_with_member_var()
+    return self.append_string(@some_var, "_appended")
+  end
+
+  def self.list_zones(gcp_project_id)
+    return google_compute_zones(project: gcp_project_id)
+  end
+end
 
 # module GcpHelpers contains auxiliary methods to accelerate
 # retrieval of GCP objects
-module GcpHelpers
+module ::GcpHelpers
   @gke_clusters_cached = false
   @gke_locations = []
   @gce_instances_cached = false
   @gce_zones = []
 
-  def get_all_gcp_locations(gcp_project_id)
+  def self.get_all_gcp_locations(gcp_project_id)
     locations = google_compute_zones(project: gcp_project_id)
                 .zone_names
     locations += google_compute_regions(project: gcp_project_id)
@@ -16,7 +37,7 @@ module GcpHelpers
     locations
   end
 
-  def collect_gke_clusters_by_location(gcp_project_id, gke_locations)
+  def self.collect_gke_clusters_by_location(gcp_project_id, gke_locations)
     gke_locations.each do |gke_location|
       google_container_clusters(project: gcp_project_id,
                                 location: gke_location).cluster_names
@@ -27,7 +48,7 @@ module GcpHelpers
     end
   end
 
-  def get_gke_clusters(gcp_project_id, gcp_gke_locations)
+  def self.get_gke_clusters(gcp_project_id, gcp_gke_locations)
     unless @gke_clusters_cached == true
       # Reset the list of cached clusters
       @cached_gke_clusters = []
@@ -35,13 +56,13 @@ module GcpHelpers
         # If we weren't passed a specific list/array of zones/region names from
         # inputs, search everywhere
         @gke_locations = if gcp_gke_locations.join.empty?
-                           get_all_gcp_locations(gcp_project_id)
+                           self.get_all_gcp_locations(gcp_project_id)
                          else
                            gcp_gke_locations
                          end
 
         # Loop/fetch/cache the names and locations of GKE clusters
-        collect_gke_clusters_by_location(gcp_project_id, @gke_locations)
+        self.collect_gke_clusters_by_location(gcp_project_id, @gke_locations)
 
         # Mark the cache as full
         @gke_clusters_cached = true
