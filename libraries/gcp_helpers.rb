@@ -17,7 +17,7 @@ module ::Kstest
   end
 
   def self.list_zones(gcp_project_id)
-    return google_compute_zones(project: gcp_project_id)
+    return ComputeZone.new({project: gcp_project_id})
   end
 end
 
