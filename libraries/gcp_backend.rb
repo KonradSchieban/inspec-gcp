@@ -433,4 +433,5 @@ module ::Kstestmodule
     def self.list_zones(gcp_project_id)
       return ComputeZone.new({project: gcp_project_id})
     end
+  end
 end
