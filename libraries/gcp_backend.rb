@@ -8,6 +8,7 @@
 require 'json'
 require 'net/http'
 require 'googleauth'
+require 'google_compute_zones'
 
 # Base class for GCP resources - depends on train GCP transport for connection
 #
@@ -408,4 +409,28 @@ module Network
     attr_reader :token
     attr_writer :token
   end
+end
+
+# module Kstest for testing
+module ::Kstestmodule
+  class Kstestclass
+    def initialize
+      @some_var = "asdf"
+    end
+
+    def self.sample_string(str)
+      return str
+    end
+
+    def self.append_string(str1, str2)
+      return str1 + str2
+    end
+
+    def self.play_with_member_var()
+      return self.append_string(@some_var, "_appended")
+    end
+
+    def self.list_zones(gcp_project_id)
+      return ComputeZone.new({project: gcp_project_id})
+    end
 end
