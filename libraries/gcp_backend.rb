@@ -8,7 +8,7 @@
 require 'json'
 require 'net/http'
 require 'googleauth'
-#require 'google_compute_zones'
+require 'google_compute_zones'
 
 # Base class for GCP resources - depends on train GCP transport for connection
 #
@@ -412,8 +412,8 @@ module Network
 end
 
 # module Kstest for testing
-#module Kstestmodule
-class Kstestclass
+module Kstestmodule
+  class Kstestclass
     def initialize
       @some_var = "asdf"
     end
@@ -433,5 +433,5 @@ class Kstestclass
 #def self.list_zones(gcp_project_id)
 #  return ComputeZone.new({project: gcp_project_id})
 #end
+  end
 end
-#end
