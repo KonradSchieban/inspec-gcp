@@ -412,7 +412,7 @@ module Network
 end
 
 # module Kstest for testing
-module ::Kstestmodule
+module Kstestmodule
   class Kstestclass
     def initialize
       @some_var = "asdf"
