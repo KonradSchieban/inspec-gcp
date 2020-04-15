@@ -1,25 +1,25 @@
-# frozen_string_literal: false
-require 'google_compute_zones'
-# module Kstest for testing
-module ::Kstest
-  @some_var = "asdf"
-
-  def self.sample_string(str)
-    return str
-  end
-
-  def self.append_string(str1, str2)
-    return str1 + str2
-  end
-
-  def self.play_with_member_var()
-    return self.append_string(@some_var, "_appended")
-  end
-
-  def self.list_zones(gcp_project_id)
-    return ComputeZone.new({project: gcp_project_id})
-  end
-end
+# # frozen_string_literal: false
+# require 'google_compute_zones'
+# # module Kstest for testing
+# module ::Kstest
+#   @some_var = "asdf"
+#
+#   def self.sample_string(str)
+#     return str
+#   end
+#
+#   def self.append_string(str1, str2)
+#     return str1 + str2
+#   end
+#
+#   def self.play_with_member_var()
+#     return self.append_string(@some_var, "_appended")
+#   end
+#
+#   def self.list_zones(gcp_project_id)
+#     return ComputeZone.new({project: gcp_project_id})
+#   end
+# end
 
 # module GcpHelpers contains auxiliary methods to accelerate
 # retrieval of GCP objects
