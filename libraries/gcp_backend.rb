@@ -8,7 +8,7 @@
 require 'json'
 require 'net/http'
 require 'googleauth'
-require 'google_compute_zones'
+#require 'google_compute_zones'
 
 # Base class for GCP resources - depends on train GCP transport for connection
 #
