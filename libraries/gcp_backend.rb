@@ -430,8 +430,8 @@ module Kstestmodule
       return self.append_string(@some_var, "_appended")
     end
 
-    def self.list_zones(gcp_project_id)
-      return ComputeZone.new({project: gcp_project_id})
-    end
+    #def self.list_zones(gcp_project_id)
+    #  return ComputeZone.new({project: gcp_project_id})
+    #end
   end
 end
